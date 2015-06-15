@@ -71,238 +71,238 @@ In terms of these quantities, the conditional probabilities are expressed as
 &P(m_1, \ldots, m_N; t_2 | n_1,\ldots,n_N ; t_1)\\
 &= \Braket{m_1, \ldots, m_N| e^{-H(t_2-t_1)}|n_1, \ldots, n_N}.
 \end{align*}
-% The number operator $\hat{n} \equiv a^{\dagger} a$ extracts the coefficient from $n$ and we can thus compute the expectation value as
-% \begin{align*}
-% \bra{\mathcal{S}}\hat{n} \ket{\psi(t)} &= \bra{\mathcal{S}}a^{\dagger} a \ket{\psi(t)}\\
-% &= \sum_{n} n P(n,t) \\
-% &= \braket{n}
-% \end{align*}
-% which generalizes to compute the expectation of any operator-valued function of the number operator
-% $$\bra{\mathcal{S}} f(a^{\dagger} a) \ket{\psi(t)} = \sum_{n} f(n) P(n,t)=\braket{f}(t)$$
+The number operator $\hat{n} \equiv a^{\dagger} a$ extracts the coefficient from $n$ and we can thus compute the expectation value as
+\begin{align*}
+\bra{\mathcal{S}}\hat{n} \ket{\psi(t)} &= \bra{\mathcal{S}}a^{\dagger} a \ket{\psi(t)}\\
+&= \sum_{n} n P(n,t) \\
+&= \braket{n}
+\end{align*}
+which generalizes to compute the expectation of any operator-valued function of the number operator
+$$\bra{\mathcal{S}} f(a^{\dagger} a) \ket{\psi(t)} = \sum_{n} f(n) P(n,t)=\braket{f}(t)$$
 
 
-% Having presented this technique, we would like to forestall any possible
-% confusion by pointing out that what we are doing here is to make use of
-% the mathematical apparatus and notation of quantum mechanics to describe
-% a purely classical system --- our probabilities are computed by summing
-% partial probabilities rather squares of amplitudes; our operators are
-% stochastic matrices rather Hermitean matrices and our exponentials are
-% real rather than complex.  Nevertheless, it turns out that when we write
-% things this way, the resulting expressions bear a formal similarity to
-% counterparts from quantum theory and that this resemblance successfully
-% suggests techniques which are of use in analyzing our problem.
+Having presented this technique, we would like to forestall any possible
+confusion by pointing out that what we are doing here is to make use of
+the mathematical apparatus and notation of quantum mechanics to describe
+a purely classical system --- our probabilities are computed by summing
+partial probabilities rather squares of amplitudes; our operators are
+stochastic matrices rather Hermitean matrices and our exponentials are
+real rather than complex.  Nevertheless, it turns out that when we write
+things this way, the resulting expressions bear a formal similarity to
+counterparts from quantum theory and that this resemblance successfully
+suggests techniques which are of use in analyzing our problem.
 
 
-% \subsection{Interaction term expansion}
-% For the purpose of analysis, $H$ can be decomposed into terms $H_0$, representing relatively low probability fluctuations between species, and $H_1$, an interaction term representing relatively higher probability reactions. In this decomposition the master equation takes the form
-% \begin{align*}
-% \frac{d \psi}{dt} = -(H_0+cH_1)\psi
-% \end{align*}
-% and has solutions
-% \begin{align*}
-% \psi(t) = \exp(-(H_0+cH_1)t)\psi(0).
-% \end{align*}
-% Choosing a specific form for $H_0$ that is bilinear in ladder operators and conserves total particle number
-% \begin{align*}
-% H_0 &= \sum_{ij} a^{\dagger i} {h_{i}}^{j} a_{j}
-% \end{align*}
-% we can write the unequal time commutation relations for the ladder operators in terms of ${h_{i}}^{j}$ as
-% \begin{align*}
-% \left[ a_{i}(t_1),a^{\dagger j}(t_2) \right] &= {\left(e^{{h_{*}}^{*} (t_1 - t_2)}\right)_{i}}^{j}.
-% \end{align*}
-% We also have time-dependent states
-% \begin{align*}
-% \Bra{n_1,\ldots,n_N,t} &= \Bra{n_1,\ldots,n_N} e^{H_0 t} \cr
-% &= \Bra{0} (a_1 (t)^{n_1}) \cdots (a_N (t)^{n_N})\\
-% \Ket{n_1,\ldots,n_N,t} &= e^{-H_0 t} \Ket{n_1,\ldots,n_N} \cr
-% &= (a^{\dagger}_1 (t)^{n_1}) \cdots (a^{\dagger}_N (t)^{n_N})\Ket{0}
-% \end{align*}
-% upon which the time-dependent ladder operators act as
-% \begin{align*}
-% a_i(t_1) &\Ket{n_1,\ldots,n_N,t} = \cr
-% &\sum_{j=1}^N n_j {{e^{h(t_1-t)}}_{i}}^{j} \Ket{n_1,\ldots,n_j-1,n_N,t},\\
-% \Bra{n_1,\ldots,n_N,t}& a^{\dagger}_i(t_1)  = \cr
-% &\sum_{j=1}^N \Bra{n_1,\ldots,n_j+1,n_N,t} {{e^{h(t_1-t)}}_{i}}^{j}.
-% \end{align*}
-% We can then reexpress $H_1$ and the time-dependent ladder operators using similarity transformations
-% \begin{align*}
-% H_1(t) &= e^{-H_0 t} H_1 e^{H_0 t},\\
-% {a_{\mu}}^{\dagger}(t) &= e^{-H_0 t} {a_{\mu}}^{\dagger} e^{H_0 t},\\
-% {a_{\mu}}(t) &= e^{-H_0 t} {a_{\mu}} e^{H_0 t}.
-% \end{align*}
-% allowing us to write solutions in terms of the time ordering operator $\mathcal{T}$
-% \begin{align*}
-% \exp &(-(H_0 + cH_1)t) \cr
-% &= \mathcal{T} \Biggl[ \exp \Biggl(\int_0^t dt_1 (-c H_1(t_1))\Biggr) \Biggr] \exp(-H_0 t).
-% \end{align*}
-% Using Wick's theorem, we can convert the time-ordering to normal-ordering
+\subsection{Interaction term expansion}
+For the purpose of analysis, $H$ can be decomposed into terms $H_0$, representing relatively low probability fluctuations between species, and $H_1$, an interaction term representing relatively higher probability reactions. In this decomposition the master equation takes the form
+\begin{align*}
+\frac{d \psi}{dt} = -(H_0+cH_1)\psi
+\end{align*}
+and has solutions
+\begin{align*}
+\psi(t) = \exp(-(H_0+cH_1)t)\psi(0).
+\end{align*}
+Choosing a specific form for $H_0$ that is bilinear in ladder operators and conserves total particle number
+\begin{align*}
+H_0 &= \sum_{ij} a^{\dagger i} {h_{i}}^{j} a_{j}
+\end{align*}
+we can write the unequal time commutation relations for the ladder operators in terms of ${h_{i}}^{j}$ as
+\begin{align*}
+\left[ a_{i}(t_1),a^{\dagger j}(t_2) \right] &= {\left(e^{{h_{*}}^{*} (t_1 - t_2)}\right)_{i}}^{j}.
+\end{align*}
+We also have time-dependent states
+\begin{align*}
+\Bra{n_1,\ldots,n_N,t} &= \Bra{n_1,\ldots,n_N} e^{H_0 t} \cr
+&= \Bra{0} (a_1 (t)^{n_1}) \cdots (a_N (t)^{n_N})\\
+\Ket{n_1,\ldots,n_N,t} &= e^{-H_0 t} \Ket{n_1,\ldots,n_N} \cr
+&= (a^{\dagger}_1 (t)^{n_1}) \cdots (a^{\dagger}_N (t)^{n_N})\Ket{0}
+\end{align*}
+upon which the time-dependent ladder operators act as
+\begin{align*}
+a_i(t_1) &\Ket{n_1,\ldots,n_N,t} = \cr
+&\sum_{j=1}^N n_j {{e^{h(t_1-t)}}_{i}}^{j} \Ket{n_1,\ldots,n_j-1,n_N,t},\\
+\Bra{n_1,\ldots,n_N,t}& a^{\dagger}_i(t_1)  = \cr
+&\sum_{j=1}^N \Bra{n_1,\ldots,n_j+1,n_N,t} {{e^{h(t_1-t)}}_{i}}^{j}.
+\end{align*}
+We can then reexpress $H_1$ and the time-dependent ladder operators using similarity transformations
+\begin{align*}
+H_1(t) &= e^{-H_0 t} H_1 e^{H_0 t},\\
+{a_{\mu}}^{\dagger}(t) &= e^{-H_0 t} {a_{\mu}}^{\dagger} e^{H_0 t},\\
+{a_{\mu}}(t) &= e^{-H_0 t} {a_{\mu}} e^{H_0 t}.
+\end{align*}
+allowing us to write solutions in terms of the time ordering operator $\mathcal{T}$
+\begin{align*}
+\exp &(-(H_0 + cH_1)t) \cr
+&= \mathcal{T} \Biggl[ \exp \Biggl(\int_0^t dt_1 (-c H_1(t_1))\Biggr) \Biggr] \exp(-H_0 t).
+\end{align*}
+Using Wick's theorem, we can convert the time-ordering to normal-ordering
 
 
-% \subsection{Appearance of new species and scaling}
-
-
-
-%  \braket{1, N-1 | e^{-Ht} | 0, N}
-
-
-% Suppose that we have two species, $A$ and $B$ and the reaction $A \to B$ with rate constant $k$.  Then $H = k (-b^\dagger a + a^\dagger a)$ and the probability of a single $B$ being observed at time $t$ if we start with zero $B$'s at time $t=0$ is given by
+\subsection{Appearance of new species and scaling}
 
 
 
-%  e^{-Ht} = e^{-k a^\dagger a} +
-%   k \int_0^t dt'\, e^{-k a^\dagger a t'} (b^\dagger a) e^{-k a^\dagger a (t - t')}
-%   + \cdots
+ \braket{1, N-1 | e^{-Ht} | 0, N}
 
 
-% We can expand $e^{-Ht}$ as a series in powers of $b^\dagger a$:
-
-
-% Only the second term will contribute to the transition probability.  Furthermore, the operator $a^\dagger a$ in the exponents can be replaced by the number of $A$'s to give
-% \begin{align*}
-%  &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
-%  k \int_0^t dt'\,\braket{1, N-1 | e^{-k a^\dagger a t'} (b^\dagger a) e^{-k a^\dagger a (t - t')} | 0, N} \cr &=
-%  k \int_0^t dt'\, e^{-k (N-1) t' - k N (t - t')} \braket{1, N-1 | b^\dagger a | 0, N} \cr &=
-%  kN \int_0^t dt'\, e^{kt' - kNt} = N (e^{kt} - 1) e^{-kNt}
-% \end{align*}
-% In order to examine scaling with $N$, let us compute the time at which this quantity attains its maximum:
-% \begin{align*}
-%  0 &= \frac{d}{dt} \braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
-%  N \left( k (1-N) e^{k (1-N) t} + kN e^{-kNt} \right)
-%  \end{align*}
-% Solving this equation, we obtain $t_\mathrm{max} = \frac{1}{k} \log \frac{N}{N-1}$.  For $N$ large, we have $\log(N/N-1) \approx 1/N$, so we conclude that $k$ scales as $1/N$.  Hence, let us set $k = 1/TN$ where $T$ is a constant with dimensions of time.  Substituting into our transition probabilty, we obtain
-% \begin{align*}
-%  \braket{1, N-1 | e^{-Ht} | 0, N} =
-%  N \left( e^\frac{t}{NT} - 1 \right) e^{-\frac{t}{T}}
-%  \end{align*}
-% Note that, $\lim_{N \to \infty} N \left( e^\frac{t}{NT} - 1 \right) = \frac{t}{T}$  so our quantity is well-behaved in the limit and, for large $N$, we have $\braket{1, N-1 | e^{-Ht} | 0, N} \approx \frac{t}{T} e^{-\frac{t}{T}}$.
+Suppose that we have two species, $A$ and $B$ and the reaction $A \to B$ with rate constant $k$.  Then $H = k (-b^\dagger a + a^\dagger a)$ and the probability of a single $B$ being observed at time $t$ if we start with zero $B$'s at time $t=0$ is given by
 
 
 
-%  H = \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} h \begin{pmatrix} b \cr a \end{pmatrix}
+ e^{-Ht} = e^{-k a^\dagger a} +
+  k \int_0^t dt'\, e^{-k a^\dagger a t'} (b^\dagger a) e^{-k a^\dagger a (t - t')}
+  + \cdots
 
 
-% Next, we will generalize this calculation to the case where we add the reverse reaction $B \to A$.  Letting $k_1$ be the rate constant for the reaction $A \to B$ and $k_2$ be the constant for $B \to A$, we have
+We can expand $e^{-Ht}$ as a series in powers of $b^\dagger a$:
 
 
-
-%  h = \begin{pmatrix} k_2 & -k_1 \cr -k_2 & k_1 \end{pmatrix}
-
-
-% where
-
-
-
-%  \begin{pmatrix} b^\dagger(t) & a^\dagger(t) \end{pmatrix} =
-%  \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} e^{-ht} .
-
-
-% Note that
-% \begin{align*}
-%  e^{-H_0 t} \ket{0, N} &=
-%  e^{-H_0 t} (a^\dagger)^N \ket{0, 0} \cr &=
-%  e^{-H_0 t} (a^\dagger)^N e^{H_0 t} \ket{0, 0} \cr &=
-%  (a^\dagger (t))^N \ket{0, 0}
-% \end{align*}
-% where, in the second line of the derivation, we use the fact that $e^{Ht} \ket{0, 0} = \ket{0, 0}$ which follows from expanding the exponential and noting that $H \ket{0, 0} = 0$.  We can obtain $a^\dagger (t)$ from the formula
-
-
-
-%  e^{-ht} = I + \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} h
-
-
-% In order to compute the exponential of $ht$, we start with the observation that $h^2 = (k_1 + k_2) h$ which can readily be verified from the definition of $h$.  Iterating, we have $h^{n+1} = (k_1 + k_2)^n h$.  Thus, if we expand the exponential, we can apply this formula and resum the terms of obtain
+Only the second term will contribute to the transition probability.  Furthermore, the operator $a^\dagger a$ in the exponents can be replaced by the number of $A$'s to give
+\begin{align*}
+ &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
+ k \int_0^t dt'\,\braket{1, N-1 | e^{-k a^\dagger a t'} (b^\dagger a) e^{-k a^\dagger a (t - t')} | 0, N} \cr &=
+ k \int_0^t dt'\, e^{-k (N-1) t' - k N (t - t')} \braket{1, N-1 | b^\dagger a | 0, N} \cr &=
+ kN \int_0^t dt'\, e^{kt' - kNt} = N (e^{kt} - 1) e^{-kNt}
+\end{align*}
+In order to examine scaling with $N$, let us compute the time at which this quantity attains its maximum:
+\begin{align*}
+ 0 &= \frac{d}{dt} \braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
+ N \left( k (1-N) e^{k (1-N) t} + kN e^{-kNt} \right)
+ \end{align*}
+Solving this equation, we obtain $t_\mathrm{max} = \frac{1}{k} \log \frac{N}{N-1}$.  For $N$ large, we have $\log(N/N-1) \approx 1/N$, so we conclude that $k$ scales as $1/N$.  Hence, let us set $k = 1/TN$ where $T$ is a constant with dimensions of time.  Substituting into our transition probabilty, we obtain
+\begin{align*}
+ \braket{1, N-1 | e^{-Ht} | 0, N} =
+ N \left( e^\frac{t}{NT} - 1 \right) e^{-\frac{t}{T}}
+ \end{align*}
+Note that, $\lim_{N \to \infty} N \left( e^\frac{t}{NT} - 1 \right) = \frac{t}{T}$  so our quantity is well-behaved in the limit and, for large $N$, we have $\braket{1, N-1 | e^{-Ht} | 0, N} \approx \frac{t}{T} e^{-\frac{t}{T}}$.
 
 
 
-%  a^\dagger (t) = a^\dagger +
-%  \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} k_1 (a^\dagger - b^\dagger) ,
+ H = \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} h \begin{pmatrix} b \cr a \end{pmatrix}
 
 
-% where $I$ is the $2 \times 2$ identity matrix.  Thus,
+Next, we will generalize this calculation to the case where we add the reverse reaction $B \to A$.  Letting $k_1$ be the rate constant for the reaction $A \to B$ and $k_2$ be the constant for $B \to A$, we have
 
 
-% whence
-% \begin{align*}
-%  &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
-%  \bra{1, N-1} \left( a^\dagger (t) \right)^N \ket{0, 0} \cr &=
-%  -N \bra{1, N-1} \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} k_1 b^\dagger \times \cr
-%   &\hskip2cm \left( \frac{k_1 e^{-(k_1 + k_2) t} + k_2}{k_1 + k_2} a^\dagger \right)^{N-1} \ket{0, 0} \cr &=
-%  N \frac{1 - e^{-(k_1 + k_2) t}}{k_1 + k_2} k_1 \left( \frac{k_1 e^{-(k_1 + k_2) t} + k_2}{k_1 + k_2} \right)^{N-1}
-% \end{align*}
-% Note that when $k_2 = 0$, this expression reduces to $N(1-e^{-k_1 t})(e^{-k_1 t})^{N-1} =N (e^{k_1 t} - 1) e^{-N k_1 t}$, which is exactly the expression we obtained previously.
+
+ h = \begin{pmatrix} k_2 & -k_1 \cr -k_2 & k_1 \end{pmatrix}
 
 
-% There are two different ways of rescaling the rate constants so as to obtain a well-defined limit as $N$ becomes large.
+where
 
 
-% Firstly, we can scale both couplings as $1/N$:
-% \begin{align*}
-% k_1 &= \frac{c_1}{N} \\
-% k_2 &= \frac{c_2}{N} \\
-% \end{align*}
-% With this scaling, our transition probability becomes
-% \begin{align*}
-%  &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
-%  \frac{c_1}{c_1 + c_2} N \left( 1 - e^{-\frac{c_1 + c_2}{N} t} \right)
-%  \left( 1 + \frac{c_1}{c_1 + c_2} \left( e^{-\frac{c_1 + c_2}{N} t} - 1 \right) \right)^{N-1}
-% \end{align*}
-% This has a well defined limit:
-% \begin{align*}
-%  \lim_{N \to \infty} \braket{1, N-1 | e^{-Ht} | 0, N} =
-%  c_1 t e^{-c_1 t}
-% \end{align*}
+
+ \begin{pmatrix} b^\dagger(t) & a^\dagger(t) \end{pmatrix} =
+ \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} e^{-ht} .
 
 
-% Secondly, we can scale $k_1$ by $1/N$  but leave $k_2$ constant.
-% \begin{align*}
-% k_1 &= \frac{c_1}{N} \\
-% k_2 &= c_2 \\
-% \end{align*}
-% With this scaling, our transition probability becomes
-% \begin{align*}
-%  &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
-%  \frac{c_1}{\frac{c_1}{N} + c_2}
-%  \left( 1 - e^{-(\frac{c_1}{N} + c_2) t} \right)
-%  \left( \frac{1 + \frac{c_1}{c_2 N} e^{-(\frac{c_1}{N} + c_2) t}}{1 + \frac{c_1}{c_2 N}} \right)^{N-1}
-% \end{align*}
-% This has a well defined limit:
-% \begin{align*}
-%  \lim_{N \to \infty} &\braket{1, N-1 | e^{-Ht} | 0, N} \\ &=
-%  \frac{c_1}{c_2}
-%  \left( 1 - e^{-c_2 t} \right)
-%  e^{- \frac{c_1}{c_2} \left( 1 - e^{-c_2 t} \right)}
-% \end{align*}
+Note that
+\begin{align*}
+ e^{-H_0 t} \ket{0, N} &=
+ e^{-H_0 t} (a^\dagger)^N \ket{0, 0} \cr &=
+ e^{-H_0 t} (a^\dagger)^N e^{H_0 t} \ket{0, 0} \cr &=
+ (a^\dagger (t))^N \ket{0, 0}
+\end{align*}
+where, in the second line of the derivation, we use the fact that $e^{Ht} \ket{0, 0} = \ket{0, 0}$ which follows from expanding the exponential and noting that $H \ket{0, 0} = 0$.  We can obtain $a^\dagger (t)$ from the formula
 
 
-% Next, we generalize this to situations in which we have more than one transition.  This will be needed for the perturbation calculations.
-% \begin{align*}
-% &\braket{ m_1, m_2 | (h_{11} {\tilde a}_1^\dagger +
-%                      h_{12} {\tilde a}_2^\dagger)^{n_1}
-%                     (h_{21} {\tilde a}_1^\dagger +
-%                      h_{22} {\tilde a}_2^\dagger)^{n_2}
-%  | 0, 0} \\ &\qquad=
-% \sum_{k_1 = 0}^{n_1} \sum_{k_2 = 0}^{n_2}
-%  {n_1 \choose k_1} {n_2 \choose k_2}
-%  h_{11}^{k_1} h_{12}^{n_1 - k_1}
-%  h_{21}^{k_2} h_{22}^{n_2 - k_2}
-%  \braket{ m_1, m_2 |
-%   ({\tilde a}_1^{\dagger})^{k_1 + k_2}
-%   ({\tilde a}_2^\dagger)^{N - k_1 - k_2} | 0, 0 } \\ &\qquad=
-% \sum_{k_1 = 0}^{n_1} \sum_{k_2 = 0}^{n_2}
-%  {n_1 \choose k_1} {n_2 \choose k_2}
-%  h_{11}^{k_1} h_{12}^{n_1 - k_1}
-%  h_{21}^{k_2} h_{22}^{n_2 - k_2}
-%  \braket{ m_1, m_2 | k_1 + k_2, N - k_1 - k_2 } \\ &\qquad=
-% \sum_{k_1 = 0}^{n_1} \sum_{k_2 = 0}^{n_2}
-%  {n_1 \choose k_1} {n_2 \choose k_2}
-%  h_{11}^{k_1} h_{12}^{n_1 - k_1}
-%  h_{21}^{k_2} h_{22}^{n_2 - k_2}
-%  \delta_{m_1 \, k_1 + k_2} \delta_{n_2 \, N - k_1 - k_2} \\
-% &\qquad= \sum_{k_1 = \max (0, m_1 + n_1 - N)}^{\max (m_1, n_1)}
-%  {n_1 \choose k_1} {N - n_1 \choose m_1 - k_1}
-%  h_{11}^{k_1} h_{12}^{n_1 - k_1}
-%  h_{21}^{m_1 - k_1} h_{22}^{N - m_1 - n_1 + k_1}
-% \end{align*}
+
+ e^{-ht} = I + \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} h
 
 
-% \subsection{System size $\frac{1}{N}$ expansion}
+In order to compute the exponential of $ht$, we start with the observation that $h^2 = (k_1 + k_2) h$ which can readily be verified from the definition of $h$.  Iterating, we have $h^{n+1} = (k_1 + k_2)^n h$.  Thus, if we expand the exponential, we can apply this formula and resum the terms of obtain
+
+
+
+ a^\dagger (t) = a^\dagger +
+ \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} k_1 (a^\dagger - b^\dagger) ,
+
+
+where $I$ is the $2 \times 2$ identity matrix.  Thus,
+
+
+whence
+\begin{align*}
+ &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
+ \bra{1, N-1} \left( a^\dagger (t) \right)^N \ket{0, 0} \cr &=
+ -N \bra{1, N-1} \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} k_1 b^\dagger \times \cr
+  &\hskip2cm \left( \frac{k_1 e^{-(k_1 + k_2) t} + k_2}{k_1 + k_2} a^\dagger \right)^{N-1} \ket{0, 0} \cr &=
+ N \frac{1 - e^{-(k_1 + k_2) t}}{k_1 + k_2} k_1 \left( \frac{k_1 e^{-(k_1 + k_2) t} + k_2}{k_1 + k_2} \right)^{N-1}
+\end{align*}
+Note that when $k_2 = 0$, this expression reduces to $N(1-e^{-k_1 t})(e^{-k_1 t})^{N-1} =N (e^{k_1 t} - 1) e^{-N k_1 t}$, which is exactly the expression we obtained previously.
+
+
+There are two different ways of rescaling the rate constants so as to obtain a well-defined limit as $N$ becomes large.
+
+
+Firstly, we can scale both couplings as $1/N$:
+\begin{align*}
+k_1 &= \frac{c_1}{N} \\
+k_2 &= \frac{c_2}{N} \\
+\end{align*}
+With this scaling, our transition probability becomes
+\begin{align*}
+ &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
+ \frac{c_1}{c_1 + c_2} N \left( 1 - e^{-\frac{c_1 + c_2}{N} t} \right)
+ \left( 1 + \frac{c_1}{c_1 + c_2} \left( e^{-\frac{c_1 + c_2}{N} t} - 1 \right) \right)^{N-1}
+\end{align*}
+This has a well defined limit:
+\begin{align*}
+ \lim_{N \to \infty} \braket{1, N-1 | e^{-Ht} | 0, N} =
+ c_1 t e^{-c_1 t}
+\end{align*}
+
+
+Secondly, we can scale $k_1$ by $1/N$  but leave $k_2$ constant.
+\begin{align*}
+k_1 &= \frac{c_1}{N} \\
+k_2 &= c_2 \\
+\end{align*}
+With this scaling, our transition probability becomes
+\begin{align*}
+ &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
+ \frac{c_1}{\frac{c_1}{N} + c_2}
+ \left( 1 - e^{-(\frac{c_1}{N} + c_2) t} \right)
+ \left( \frac{1 + \frac{c_1}{c_2 N} e^{-(\frac{c_1}{N} + c_2) t}}{1 + \frac{c_1}{c_2 N}} \right)^{N-1}
+\end{align*}
+This has a well defined limit:
+\begin{align*}
+ \lim_{N \to \infty} &\braket{1, N-1 | e^{-Ht} | 0, N} \\ &=
+ \frac{c_1}{c_2}
+ \left( 1 - e^{-c_2 t} \right)
+ e^{- \frac{c_1}{c_2} \left( 1 - e^{-c_2 t} \right)}
+\end{align*}
+
+
+Next, we generalize this to situations in which we have more than one transition.  This will be needed for the perturbation calculations.
+\begin{align*}
+&\braket{ m_1, m_2 | (h_{11} {\tilde a}_1^\dagger +
+                     h_{12} {\tilde a}_2^\dagger)^{n_1}
+                    (h_{21} {\tilde a}_1^\dagger +
+                     h_{22} {\tilde a}_2^\dagger)^{n_2}
+ | 0, 0} \\ &\qquad=
+\sum_{k_1 = 0}^{n_1} \sum_{k_2 = 0}^{n_2}
+ {n_1 \choose k_1} {n_2 \choose k_2}
+ h_{11}^{k_1} h_{12}^{n_1 - k_1}
+ h_{21}^{k_2} h_{22}^{n_2 - k_2}
+ \braket{ m_1, m_2 |
+  ({\tilde a}_1^{\dagger})^{k_1 + k_2}
+  ({\tilde a}_2^\dagger)^{N - k_1 - k_2} | 0, 0 } \\ &\qquad=
+\sum_{k_1 = 0}^{n_1} \sum_{k_2 = 0}^{n_2}
+ {n_1 \choose k_1} {n_2 \choose k_2}
+ h_{11}^{k_1} h_{12}^{n_1 - k_1}
+ h_{21}^{k_2} h_{22}^{n_2 - k_2}
+ \braket{ m_1, m_2 | k_1 + k_2, N - k_1 - k_2 } \\ &\qquad=
+\sum_{k_1 = 0}^{n_1} \sum_{k_2 = 0}^{n_2}
+ {n_1 \choose k_1} {n_2 \choose k_2}
+ h_{11}^{k_1} h_{12}^{n_1 - k_1}
+ h_{21}^{k_2} h_{22}^{n_2 - k_2}
+ \delta_{m_1 \, k_1 + k_2} \delta_{n_2 \, N - k_1 - k_2} \\
+&\qquad= \sum_{k_1 = \max (0, m_1 + n_1 - N)}^{\max (m_1, n_1)}
+ {n_1 \choose k_1} {N - n_1 \choose m_1 - k_1}
+ h_{11}^{k_1} h_{12}^{n_1 - k_1}
+ h_{21}^{m_1 - k_1} h_{22}^{N - m_1 - n_1 + k_1}
+\end{align*}
+
+
+\subsection{System size $\frac{1}{N}$ expansion}
