@@ -1,5 +1,4 @@
 abstract.tex
-reprint_amsmathamssy.tex
 sectionlabelsecintro.tex
 sectionlabelsecresul.tex
 sectionlabelsecresul1.tex
