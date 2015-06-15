@@ -1,15 +1,18 @@
-\section{\label{sec:results}Results}
+\section{\label{sec:intro}Introduction}
+Underlying traditional mean-field mass-action models that are applied in the study of population dynamics as well as chemical reaction networks is a first-order Markovian stochastic process on a state space comprising the positive orthant of a hypercubic lattice. This is because in models of population dynamics as well as chemical reaction networks the traditional state variables represent the fraction of a given type of entity, whether they be biological organismic or chemical species. Because it is more difficult to analyze the underlying stochastic process, whether implicitly or explicitly, the assumptions necessary to justify the mean-field ODE models that dominate literature on both population dynamics and chemical reaction networks are imposed.
 
+Using methods from quantum field theory at phenomenological levels above their domain of initial development, we demonstrate how the stochastic process underlying the traditional mean-field models can be solved in some generality for reaction networks applicable to both population dynamic and chemical reaction network models. Modeling such systems at this level, enables one to take into account fluctuations which are necessarily neglected by mean-field models, while the methods we apply are nearly as general as those used to study mean-field models. We hope that combined, the latter two facts may help to push the boundary in the understanding of the applicability and development of models of reaction networks, regardless of the particular level of organization at which they are applied.
+
+\section{\label{sec:results}Results}
 
 \subsection{The master equation for reaction networks}
 The general form of the master equation for reaction networks in the conventional basis of state probabilities is
-% \begin{widetext}
+\begin{widetext}
 \begin{align*}
 \frac{d P(n_i,t)}{dt} = \sum_{\mu \rightarrow \mu' \colon R} k_{\mu \rightarrow \mu'} \left(\prod_{i \colon S} \binom{n_i + \mu_i - \mu'_i}{\mu_i} P(n_i + \mu_i - \mu'_i,t) - \prod_{i \colon S} \binom{n_i}{\mu_i} P(n_i,t) \right)
 \end{align*}
-% \end{widetext}
+\end{widetext}
 where $n_i$ represents a state vector over species $S$, $R$ is the set of reactions between complexes $\mu, \mu', \ldots$, and $k_{\mu \rightarrow \mu'}$ is the rate constant for the reaction taking complex $\mu$ into $\mu'$.
-
 
 For the purpose of computation, it often turns out to be easier to
 manipulate a generating function rather than compute with the
@@ -45,19 +48,21 @@ a \Ket{\alpha} &= \alpha \Ket{\alpha}\\
 \end{align*}
 Because
 $$
+\frac{d^n}{d \alpha^n} \Ket{\alpha} = a^{\dagger n} \Ket{\alpha},
 $$
 the relationship of the coherent states to the $\Ket{n}$ state is given by
 $$
+\Ket{n} = \left. \frac{d^n}{d \alpha^n} \Ket{\alpha} \right|_{\alpha=0}.
 $$
 the reference state with respect to which all others are normalized is the coherent state
 $$\Bra{\alpha \mathcal{S}} = \bra{0}e^{\alpha a}$$
 where $\alpha\equiv1$. The norm of a given normalized state $\ket{n}=a^{\dagger n} \ket{0}$ is then
 $$\Braket{\mathcal{S}|n}=1$$
 
-
 We define the generating function as follows:
 $$
 | \psi (t) \rangle =
+\sum_{n_1 = 1}^\infty \cdots \sum_{n_N = 1}^\infty
 P (n_1, \ldots, n_N, t) |n_1, \ldots, n_N \rangle
 $$
 Upon substituting this into the master equation and simplifying, we find
@@ -80,7 +85,6 @@ The number operator $\hat{n} \equiv a^{\dagger} a$ extracts the coefficient from
 which generalizes to compute the expectation of any operator-valued function of the number operator
 $$\bra{\mathcal{S}} f(a^{\dagger} a) \ket{\psi(t)} = \sum_{n} f(n) P(n,t)=\braket{f}(t)$$
 
-
 Having presented this technique, we would like to forestall any possible
 confusion by pointing out that what we are doing here is to make use of
 the mathematical apparatus and notation of quantum mechanics to describe
@@ -92,9 +96,8 @@ things this way, the resulting expressions bear a formal similarity to
 counterparts from quantum theory and that this resemblance successfully
 suggests techniques which are of use in analyzing our problem.
 
-
 \subsection{Interaction term expansion}
-For the purpose of analysis, $H$ can be decomposed into terms $H_0$, representing relatively low probability fluctuations between species, and $H_1$, an interaction term representing relatively higher probability reactions. In this decomposition the master equation takes the form
+For the purpose of analysis, $H$ can be decomposed into terms $H_0$, representing relatively low probabiltiy fluctuations between species, and $H_1$, an interaction term representing relatively higher probability reactions. In this decomposition the master equation takes the form
 \begin{align*}
 \frac{d \psi}{dt} = -(H_0+cH_1)\psi
 \end{align*}
@@ -137,26 +140,18 @@ allowing us to write solutions in terms of the time ordering operator $\mathcal{
 \end{align*}
 Using Wick's theorem, we can convert the time-ordering to normal-ordering
 
-
 \subsection{Appearance of new species and scaling}
 
-
-
- \braket{1, N-1 | e^{-Ht} | 0, N}
-
-
 Suppose that we have two species, $A$ and $B$ and the reaction $A \to B$ with rate constant $k$.  Then $H = k (-b^\dagger a + a^\dagger a)$ and the probability of a single $B$ being observed at time $t$ if we start with zero $B$'s at time $t=0$ is given by
-
-
-
- e^{-Ht} = e^{-k a^\dagger a} +
-  k \int_0^t dt'\, e^{-k a^\dagger a t'} (b^\dagger a) e^{-k a^\dagger a (t - t')}
-  + \cdots
-
-
+\[
+ \braket{1, N-1 | e^{-Ht} | 0, N}
+\]
 We can expand $e^{-Ht}$ as a series in powers of $b^\dagger a$:
-
-
+\[
+ e^{-Ht} = e^{-k a^\dagger a} +
+   k \int_0^t dt'\, e^{-k a^\dagger a t'} (b^\dagger a) e^{-k a^\dagger a (t - t')}
+   + \cdots
+\]
 Only the second term will contribute to the transition probability.  Furthermore, the operator $a^\dagger a$ in the exponents can be replaced by the number of $A$'s to give
 \begin{align*}
  &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
@@ -169,33 +164,21 @@ In order to examine scaling with $N$, let us compute the time at which this quan
  0 &= \frac{d}{dt} \braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
  N \left( k (1-N) e^{k (1-N) t} + kN e^{-kNt} \right)
  \end{align*}
-Solving this equation, we obtain $t_\mathrm{max} = \frac{1}{k} \log \frac{N}{N-1}$.  For $N$ large, we have $\log(N/N-1) \approx 1/N$, so we conclude that $k$ scales as $1/N$.  Hence, let us set $k = 1/TN$ where $T$ is a constant with dimensions of time.  Substituting into our transition probabilty, we obtain
-\begin{align*}
+ Solving this equation, we obtain $t_\mathrm{max} = \frac{1}{k} \log \frac{N}{N-1}$.  For $N$ large, we have $\log(N/N-1) \approx 1/N$, so we conclude that $k$ scales as $1/N$.  Hence, let us set $k = 1/TN$ where $T$ is a constant with dimensions of time.  Substituting into our transition probabilty, we obtain
+ \begin{align*}
  \braket{1, N-1 | e^{-Ht} | 0, N} =
  N \left( e^\frac{t}{NT} - 1 \right) e^{-\frac{t}{T}}
  \end{align*}
-Note that, $\lim_{N \to \infty} N \left( e^\frac{t}{NT} - 1 \right) = \frac{t}{T}$  so our quantity is well-behaved in the limit and, for large $N$, we have $\braket{1, N-1 | e^{-Ht} | 0, N} \approx \frac{t}{T} e^{-\frac{t}{T}}$.
-
-
-
- H = \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} h \begin{pmatrix} b \cr a \end{pmatrix}
-
+ Note that, $\lim_{N \to \infty} N \left( e^\frac{t}{NT} - 1 \right) = \frac{t}{T}$  so our quantity is well-behaved in the limit and, for large $N$, we have $\braket{1, N-1 | e^{-Ht} | 0, N} \approx \frac{t}{T} e^{-\frac{t}{T}}$.
 
 Next, we will generalize this calculation to the case where we add the reverse reaction $B \to A$.  Letting $k_1$ be the rate constant for the reaction $A \to B$ and $k_2$ be the constant for $B \to A$, we have
-
-
-
- h = \begin{pmatrix} k_2 & -k_1 \cr -k_2 & k_1 \end{pmatrix}
-
-
+\[
+ H = \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} h \begin{pmatrix} b \cr a \end{pmatrix}
+\]
 where
-
-
-
- \begin{pmatrix} b^\dagger(t) & a^\dagger(t) \end{pmatrix} =
- \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} e^{-ht} .
-
-
+\[
+ h = \begin{pmatrix} k_2 & -k_1 \cr -k_2 & k_1 \end{pmatrix}
+\]
 Note that
 \begin{align*}
  e^{-H_0 t} \ket{0, N} &=
@@ -204,36 +187,30 @@ Note that
  (a^\dagger (t))^N \ket{0, 0}
 \end{align*}
 where, in the second line of the derivation, we use the fact that $e^{Ht} \ket{0, 0} = \ket{0, 0}$ which follows from expanding the exponential and noting that $H \ket{0, 0} = 0$.  We can obtain $a^\dagger (t)$ from the formula
-
-
-
- e^{-ht} = I + \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} h
-
-
+\[
+ \begin{pmatrix} b^\dagger(t) & a^\dagger(t) \end{pmatrix} =
+ \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} e^{-ht} .
+\]
 In order to compute the exponential of $ht$, we start with the observation that $h^2 = (k_1 + k_2) h$ which can readily be verified from the definition of $h$.  Iterating, we have $h^{n+1} = (k_1 + k_2)^n h$.  Thus, if we expand the exponential, we can apply this formula and resum the terms of obtain
-
-
-
+\[
+ e^{-ht} = I + \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} h
+\]
+where $I$ is the $2 \times 2$ identity matrix.  Thus,
+\[
  a^\dagger (t) = a^\dagger +
  \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} k_1 (a^\dagger - b^\dagger) ,
-
-
-where $I$ is the $2 \times 2$ identity matrix.  Thus,
-
-
+\]
 whence
 \begin{align*}
  &\!\braket{1, N-1 | e^{-Ht} | 0, N} \cr &=
  \bra{1, N-1} \left( a^\dagger (t) \right)^N \ket{0, 0} \cr &=
  -N \bra{1, N-1} \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} k_1 b^\dagger \times \cr
-  &\hskip2cm \left( \frac{k_1 e^{-(k_1 + k_2) t} + k_2}{k_1 + k_2} a^\dagger \right)^{N-1} \ket{0, 0} \cr &=
+   &\hskip2cm \left( \frac{k_1 e^{-(k_1 + k_2) t} + k_2}{k_1 + k_2} a^\dagger \right)^{N-1} \ket{0, 0} \cr &=
  N \frac{1 - e^{-(k_1 + k_2) t}}{k_1 + k_2} k_1 \left( \frac{k_1 e^{-(k_1 + k_2) t} + k_2}{k_1 + k_2} \right)^{N-1}
 \end{align*}
 Note that when $k_2 = 0$, this expression reduces to $N(1-e^{-k_1 t})(e^{-k_1 t})^{N-1} =N (e^{k_1 t} - 1) e^{-N k_1 t}$, which is exactly the expression we obtained previously.
 
-
 There are two different ways of rescaling the rate constants so as to obtain a well-defined limit as $N$ becomes large.
-
 
 Firstly, we can scale both couplings as $1/N$:
 \begin{align*}
@@ -251,7 +228,6 @@ This has a well defined limit:
  \lim_{N \to \infty} \braket{1, N-1 | e^{-Ht} | 0, N} =
  c_1 t e^{-c_1 t}
 \end{align*}
-
 
 Secondly, we can scale $k_1$ by $1/N$  but leave $k_2$ constant.
 \begin{align*}
@@ -272,7 +248,6 @@ This has a well defined limit:
  \left( 1 - e^{-c_2 t} \right)
  e^{- \frac{c_1}{c_2} \left( 1 - e^{-c_2 t} \right)}
 \end{align*}
-
 
 Next, we generalize this to situations in which we have more than one transition.  This will be needed for the perturbation calculations.
 \begin{align*}
@@ -303,6 +278,7 @@ Next, we generalize this to situations in which we have more than one transition
  h_{11}^{k_1} h_{12}^{n_1 - k_1}
  h_{21}^{m_1 - k_1} h_{22}^{N - m_1 - n_1 + k_1}
 \end{align*}
+
 
 
 \subsection{System size $\frac{1}{N}$ expansion}
