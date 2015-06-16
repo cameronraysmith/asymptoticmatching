@@ -181,11 +181,12 @@ Note that
  e^{-H_0 t} (a^\dagger)^N e^{H_0 t} \ket{0, 0} \cr &=
  (a^\dagger (t))^N \ket{0, 0}
 \end{align*}
-where, in the second line of the derivation, we use the fact that $e^{Ht} \ket{0, 0} = \ket{0, 0}$ which follows from expanding the exponential and noting that $H \ket{0, 0} = 0$.  We can obtain $a^\dagger (t)$ from the formula
-\[
- \begin{pmatrix} b^\dagger(t) & a^\dagger(t) \end{pmatrix} =
- \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} e^{-ht} .
-\]
+where, in the second line of the derivation, we use the fact that $e^{Ht} \ket{0, 0} = \ket{0, 0}$ which follows from expanding the exponential and noting that $H \ket{0, 0} = 0$.  We can obtain $a^\dagger (t)$ from the formulae
+\begin{align*}
+ \begin{pmatrix} b^\dagger(t) & a^\dagger(t) \end{pmatrix} &=
+ \begin{pmatrix} b^\dagger & a^\dagger \end{pmatrix} e^{-ht} \\
+ \begin{pmatrix} b(t) \\ a(t) \end{pmatrix} &=
+ e^{ht} \begin{pmatrix} b \\ a \end{pmatrix} \end{align*}.
 In order to compute the exponential of $ht$, we start with the observation that $h^2 = (k_1 + k_2) h$ which can readily be verified from the definition of $h$.  Iterating, we have $h^{n+1} = (k_1 + k_2)^n h$.  Thus, if we expand the exponential, we can apply this formula and resum the terms to obtain
 \begin{align*}
  e^{-ht} &= I + \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} h \\ &=
