@@ -189,10 +189,10 @@ where, in the second line of the derivation, we use the fact that $e^{Ht} \ket{0
 In order to compute the exponential of $ht$, we start with the observation that $h^2 = (k_1 + k_2) h$ which can readily be verified from the definition of $h$.  Iterating, we have $h^{n+1} = (k_1 + k_2)^n h$.  Thus, if we expand the exponential, we can apply this formula and resum the terms to obtain
 \begin{align*}
  e^{-ht} &= I + \frac{e^{-(k_1 + k_2) t} - 1}{k_1 + k_2} h \\ &=
- \begin{pmatrix} \frac{k_2 + k_1 e^{-t(k_ + k_2)}}{k_1 + k_2} &
-   \frac{k_2 (1 - e^{-t(k_ + k_2)})}{k_1 + k_2} \\
- \frac{k_1 (1 - e^{-t(k_ + k_2)})}{k_1 + k_2} &
-    \frac{k_1 + k_2 e^{-t(k_ + k_2)}}{k_1 + k_2}
+ \begin{pmatrix} \frac{k_2 + k_1 e^{-t(k_1 + k_2)}}{k_1 + k_2} &
+   \frac{k_2 (1 - e^{-t(k_1 + k_2)})}{k_1 + k_2} \\
+ \frac{k_1 (1 - e^{-t(k_1 + k_2)})}{k_1 + k_2} &
+    \frac{k_1 + k_2 e^{-t(k_1 + k_2)}}{k_1 + k_2}
  \end{pmatrix}
 \end{align*}
 where $I$ is the $2 \times 2$ identity matrix.  Thus,
